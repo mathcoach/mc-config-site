@@ -1,0 +1,32 @@
+***********************************************
+Semi-automatic generation of Configuration File
+***********************************************
+
+
+To use this Feature you have to put artifacts ``mc-artifact-annotation`` and ``mc-config-tool-annotation-processor``
+to your dependency:
+
+.. code-block:: xml
+
+    <dependency>
+        <groupId>io.github.mathcoach</groupId>
+        <artifactId>mc-config-annotation</artifactId>
+        <version>${mc.config.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.github.mathcoach</groupId>
+        <artifactId>mc-config-tool-annotation-processor</artifactId>
+        <version>${mc.config.version}</version>
+    </dependency>
+
+Now you can use the annotations ``NeedConfig`` and ``NeedConfigs`` to notate classes, which need one or more configuration
+parameter to work proper.
+
+(TODO: example code)
+
+
+When these classes are compiled, these annotations are processed and some new classes are generated, which you can use
+to collect all configuration parameters existing in classpath.
+
+(TODO: example code)
+

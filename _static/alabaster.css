@@ -30,7 +30,7 @@ body {
 
 
 div.document {
-    width: 940px;
+    width: 130ex;
     margin: 30px auto 0 auto;
 }
 
@@ -64,7 +64,7 @@ div.body > .section {
 }
 
 div.footer {
-    width: 940px;
+    width: 130ex;
     margin: 20px auto 30px auto;
     font-size: 14px;
     color: #888;
@@ -290,7 +290,7 @@ p.admonition-title:after {
 
 pre, tt, code {
     font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
-    font-size: smaller;
+    font-size: 12px;
 }
 
 .hll {
