@@ -51,7 +51,7 @@ Extend the Maven pom.xml with this dependency:
 .. code-block:: xml
 
    <properties>
-       <mc.config.verion>3.0.3</mc.config.version>
+       <mc.config.verion>3.0.5</mc.config.version>
    </properties>
 
    <dependencies>
