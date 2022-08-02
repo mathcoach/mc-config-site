@@ -12,8 +12,9 @@ mc-config-tool documentation
    :hidden:
 
    How Config File is Parsed <parser-properties-file>
-   credits
    Config File generate <gen-config>
+   credits
+
 
 
 A library to simplify configuration of Java Software

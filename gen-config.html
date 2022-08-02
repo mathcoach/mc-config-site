@@ -16,7 +16,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Credits" href="credits.html" />
+    <link rel="next" title="Credits" href="credits.html" />
+    <link rel="prev" title="How Configuration File is Parsed" href="parser-properties-file.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -48,10 +49,142 @@ to your dependency:</p>
 </div>
 <p>Now you can use the annotations <code class="docutils literal notranslate"><span class="pre">NeedConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">NeedConfigs</span></code> to notate classes, which need one or more configuration
 parameter to work proper.</p>
-<p>(TODO: example code)</p>
-<p>When these classes are compiled, these annotations are processed and some new classes are generated, which you can use
-to collect all configuration parameters existing in classpath.</p>
-<p>(TODO: example code)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NeedConfig</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_URL_KEY</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;JDBC URL to database for myapp&quot;</span><span class="p">,</span>
+    <span class="n">sugguestValues</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;jdbc:postgresql://locahost:5432/myapp&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nd">@NeedConfig</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_USER_KEY</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Database user who is authorized to connect to database configured by &quot;</span>
+         <span class="o">+</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_URL_KEY</span>
+<span class="p">)</span>
+<span class="nd">@NeedConfig</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_PASS_KEY</span><span class="p">,</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Password of user to connect to database configured by &quot;</span> <span class="o">+</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_URL_KEY</span>
+<span class="p">)</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASS_KEY</span> <span class="o">=</span> <span class="s">&quot;db.password&quot;</span><span class="p">;</span>
+
+    <span class="n">DataSource</span> <span class="nf">getDataSource</span><span class="p">(</span><span class="n">EnvConfiguration</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">dbUrl</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">dbPass</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
+        <span class="c1">// create an instance of DataSource using variables dbUrl, dbUser, dbPass</span>
+        <span class="c1">// ....</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The annotation <code class="docutils literal notranslate"><span class="pre">NeedConfig</span></code> can be used across Java Classes in the project. Documenting about how a class must be configured
+can be write near to code.</p>
+<p>When these classes are compiled, these annotations are processed and some new classes are generated. This is especially useful if
+your project is a library. Your library client (in most case is an application) can not only collect its own configuration information,
+but alos information how to configure your library as its runtime.</p>
+<p>To collect configuration information which generated by compiling class with <code class="docutils literal notranslate"><span class="pre">&#64;NeedConfig</span></code> you need to add the
+artifact <code class="docutils literal notranslate"><span class="pre">mc-config-tool-collector</span></code> to your project. This is applied in most case of writing applications, very seldom in
+case of writing library.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>de.htwsaar<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mc-config-tool-collector<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>${mc.config.version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<p>For example this code can be call at the start up phase of a program. It tries to configure it self. If
+the file in <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">=</span> <span class="pre">...</span></code> does not exist, it creates a template file.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// initialize app</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">EnvConfiguration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">AppConfig</span><span class="p">.</span><span class="na">getConfig</span><span class="p">()</span> <span class="p">;</span>
+        <span class="c1">// Do something with configuration</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ImportCfgFileNotFound</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Path</span> <span class="n">configPath</span> <span class="o">=</span> <span class="n">ex</span><span class="p">.</span><span class="na">getImportedPath</span><span class="p">();</span>
+        <span class="n">createConfigTemplateFile</span><span class="p">(</span><span class="n">configPath</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">createConfigTemplateFile</span><span class="p">(</span><span class="n">Path</span> <span class="n">configPath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">ConfigEntries</span><span class="p">.</span><span class="na">Entry</span><span class="o">&gt;</span> <span class="n">usedConfigParam</span> <span class="o">=</span> <span class="n">ConfigCollector</span><span class="p">.</span><span class="na">collectConfigAsMap</span><span class="p">();</span>
+    <span class="c1">// iterate over usedConfigParam and print it out</span>
+    <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="p">...</span> <span class="p">;</span> <span class="c1">// create an appropriate Stream according to configPath</span>
+    <span class="k">try</span> <span class="p">(</span><span class="n">PrintWriter</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="p">(</span><span class="n">out</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;# copy this template to &quot;</span> <span class="o">+</span> <span class="n">configPath</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span> <span class="p">);</span>
+        <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">usedConfigParameter</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span>  <span class="p">{</span>
+            <span class="n">p</span><span class="c1">// config template</span>
+            <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; = &quot;</span><span class="p">);</span>
+            <span class="c1">// comment about used in</span>
+            <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;# Used in&quot;</span><span class="p">);</span>
+            <span class="n">Set</span><span class="o">&lt;</span><span class="n">ConfigEntries</span><span class="p">.</span><span class="na">ConfigUser</span><span class="o">&gt;</span> <span class="n">useIn</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">useIn</span><span class="p">();</span>
+            <span class="n">useIn</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">user</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;# * &quot;</span><span class="p">);</span>
+                <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+                <span class="n">String</span><span class="o">[]</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="na">description</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;\\n&quot;</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">lines</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;#     &quot;</span><span class="p">);</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">lines</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+            <span class="c1">// possible values</span>
+            <span class="kd">final</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">suggestValue</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">suggestValue</span><span class="p">();</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">suggestValue</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;# Suggest:&quot;</span><span class="p">);</span>
+                <span class="n">suggestValue</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span> <span class="n">v</span><span class="o">-&gt;</span> <span class="p">{</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;# &quot;</span><span class="p">);</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">);</span>
+                    <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+            <span class="c1">// end</span>
+            <span class="n">p</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">IOException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Tell user, the app cannot create a template file for config</span>
+        <span class="c1">// ....</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code example is kept simple. Its object is to demonstrate how to use the class <code class="docutils literal notranslate"><span class="pre">ConfigEntries.Entry</span></code> to
+get retrieve configuration information. You must adapt this example to your own situation.</p>
+</div>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;NeedConfig</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/annotation/NeedConfig.html">apidocs/de/htwsaar/config/annotation/NeedConfig.html</a></p>
+</aside>
+<aside class="footnote brackets" id="f2" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/EnvConfiguration.html">apidocs/de/htwsaar/config/EnvConfiguration.html</a></p>
+</aside>
+<aside class="footnote brackets" id="f3" role="note">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">ImportCfgFileNotFound</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ImportCfgFileNotFound.html">apidocs/de/htwsaar/config/ImportCfgFileNotFound.html</a></p>
+</aside>
+<aside class="footnote brackets" id="f4" role="note">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">ConfigCollector</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ConfigCollector.html">apidocs/de/htwsaar/config/ConfigCollector.html</a></p>
+</aside>
+<aside class="footnote brackets" id="f5" role="note">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">ConfigEntries.Entry</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ConfigEntries.Entry.html">apidocs/de/htwsaar/config/ConfigEntries.Entry.html</a></p>
+</aside>
+<aside class="footnote brackets" id="f6" role="note">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">ConfigEntries.ConfigUser</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ConfigEntries.ConfigUser.html">apidocs/de/htwsaar/config/ConfigEntries.ConfigUser.html</a></p>
+</aside>
+</aside>
 </section>
 
 
@@ -73,15 +206,16 @@ to collect all configuration parameters existing in classpath.</p>
 <p class="caption" role="heading"><span class="caption-text">In Detail:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="parser-properties-file.html">How Config File is Parsed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Config File generate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="credits.html" title="previous chapter">Credits</a></li>
+      <li>Previous: <a href="parser-properties-file.html" title="previous chapter">How Configuration File is Parsed</a></li>
+      <li>Next: <a href="credits.html" title="next chapter">Credits</a></li>
   </ul></li>
 </ul>
 </div>
