@@ -98,7 +98,7 @@ Java Process and the Home directory of the Java Process Owner respectively. So y
 as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
 System environment <code class="docutils literal notranslate"><span class="pre">user.home</span></code> and <code class="docutils literal notranslate"><span class="pre">user.dir</span></code>. So it should work on platforms, which Java support.
 This library is howerver only tested with Linux.</p>
-<p>A Parameter can make a reference an other parameter in its value. The embeded parameter is also resolved to its value. Of course
+<p>A Parameter can make a reference to an other parameter in its value. The embeded parameter is also resolved to its value. Of course
 you cannot make a circular reference, directly or indirectly. In this case an exception is thrown. For example:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">myapp.base</span> <span class="o">=</span> <span class="s">$HOME/myapp</span>
 <span class="na">myapp.data</span> <span class="o">=</span> <span class="s">${myapp.base}/data</span>
