@@ -81,7 +81,7 @@ Substitution
 The two annotations ``${PWD}`` / ``$PWD`` and ``${HOME}`` / ``$HOME`` are resolved to Working directory of the
 Java Process and the Home directory of the Java Process Owner respectively. So you shoud not use `PWD` and `HOME`
 as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
-System environment ``user.home`` and ``user.dir``. So it should work on platform, which Java supports.
+System environment ``user.home`` and ``user.dir``. So it should work on platforms, which Java support.
 This library is howerver only tested on Linux.
 
 
