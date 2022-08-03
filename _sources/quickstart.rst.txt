@@ -23,8 +23,8 @@ If your app is distributed, and runs somewhere else, so your users can create a 
 
 
 
-1. Update the maven pom.xml
-===========================
+1. Update Maven pom.xml
+=======================
 
 Extend the Maven pom.xml with this dependency:
 
