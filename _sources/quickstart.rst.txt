@@ -248,8 +248,8 @@ Indices and tables
 Classes in this section
 -----------------------
 
-.. [#f1] ``EnvConfiguration`` `<apidocs/de/htwsaar>`_
-.. [#f2] ``DynamicConfig`` `<apidocs/de/htwssar>`_
+.. [#f1] ``EnvConfiguration`` `<apidocs/de/htwsaar/config/EnvConfiguration.html>`_
+.. [#f2] ``DynamicConfig`` `<apidocs/de/htwsaar/config/DynamicConfig.html>`_
 
 
 
