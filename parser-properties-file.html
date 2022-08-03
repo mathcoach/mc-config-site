@@ -45,8 +45,8 @@ and let users detect error in configuration file fast. In this example</p>
 </div>
 <p>the value of <code class="docutils literal notranslate"><span class="pre">weird-config</span></code> is the empty string.</p>
 <p>If you really want a configuration value as whitespaces, just write explcit what you need. For example, your app
-must parse an CSV file, which either uses one space or tab or an other visible character (<code class="docutils literal notranslate"><span class="pre">,</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code>) for column separator,
-you can write configuration like this:</p>
+must parse a CSV file, which either uses one space or tab or an other visible character (e.g. <code class="docutils literal notranslate"><span class="pre">,</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code>) for column
+separator, you can write configuration like this:</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># if this set to true, use space for column separator,</span>
 <span class="c"># ignore other configuration CSV column separator</span>
 <span class="na">space_as_separator</span> <span class="o">=</span> <span class="s">false</span>

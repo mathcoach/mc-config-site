@@ -22,8 +22,8 @@ the value of ``weird-config`` is the empty string.
 
 
 If you really want a configuration value as whitespaces, just write explcit what you need. For example, your app
-must parse an CSV file, which either uses one space or tab or an other visible character (``,`` or ``;``) for column separator,
-you can write configuration like this:
+must parse a CSV file, which either uses one space or tab or an other visible character (e.g. ``,`` or ``;``) for column
+separator, you can write configuration like this:
 
 .. code-block:: properties
 
