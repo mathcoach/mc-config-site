@@ -231,7 +231,7 @@ with appropriate configuration value of their computer.
 
 
 Where to go next
-================
+----------------
 
 * :doc:`parser-properties-file`
 * :doc:`gen-config`
