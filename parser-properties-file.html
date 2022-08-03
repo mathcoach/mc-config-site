@@ -93,7 +93,7 @@ You must check the configured parameter in you desired order:</p>
 </section>
 <section id="substitution">
 <h2>Substitution<a class="headerlink" href="#substitution" title="Permalink to this heading">¶</a></h2>
-<p>The two annotations <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> / <code class="docutils literal notranslate"><span class="pre">$PWD</span></code> and <code class="docutils literal notranslate"><span class="pre">${HOME}}</span></code> / <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> are resolved to Working directory of the
+<p>The two annotations <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> / <code class="docutils literal notranslate"><span class="pre">$PWD</span></code> and <code class="docutils literal notranslate"><span class="pre">${HOME}</span></code> / <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> are resolved to Working directory of the
 Java Process and the Home directory of the Java Process Owner respectively. So you shoud not use <cite>PWD</cite> and <cite>HOME</cite>
 as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
 System environment <code class="docutils literal notranslate"><span class="pre">user.home</span></code> and <code class="docutils literal notranslate"><span class="pre">user.dir</span></code>. So it should work on platform, which Java supports.
