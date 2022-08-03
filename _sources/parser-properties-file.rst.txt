@@ -85,8 +85,8 @@ System environment ``user.home`` and ``user.dir``. So it should work on platform
 This library is howerver only tested with Linux.
 
 
-A Parameter can make a reference to an other parameter in its value. The embeded parameter is also resolved to its value. Of course
-you cannot make a circular reference, directly or indirectly. In this case an exception is thrown. For example:
+A Parameter can make a reference to an other parameter in its value. The embeded parameter is also resolved to its value.
+For example:
 
 .. code-block:: properties
 
@@ -94,3 +94,4 @@ you cannot make a circular reference, directly or indirectly. In this case an ex
     myapp.data = ${myapp.base}/data
     myapp.conf = ${myapp.base}/conf
 
+Of course you cannot make a circular reference, directly or indirectly. In this case an exception is thrown.
