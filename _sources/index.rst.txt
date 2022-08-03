@@ -21,3 +21,6 @@ mc-config-tool documentation
 A library to simplify configuration of Java Software
 
 
+* :doc:`quickstart`
+* :doc:`parser-properties-file`
+* :doc:`gen-config`
