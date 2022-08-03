@@ -170,9 +170,9 @@ very comfortable. One must remember the order of arguments. In this case there i
 <p>The class <code class="docutils literal notranslate"><span class="pre">DbConnector</span></code> in this pattern is only limited testable. It depends on the configuration in the file
 <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration-test.properties</span></code> during the running of unit-test respectively the file
 <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code> during the productive running. So some edge-case such as wrong configuration,
-database does not exist, ect. cannot be tested in unittest. (At least without changine the configuration)</p>
-<p>This pattern is only suitable in the initial code of a app, for example in the <code class="docutils literal notranslate"><span class="pre">main(String[]</span> <span class="pre">argv)</span></code> or
-initial code for webapp.</p>
+database does not exist, ect. cannot be tested in unittest. (At least without changing the configuration)</p>
+<p>This pattern is only suitable in the initial code of an app, for example in the <code class="docutils literal notranslate"><span class="pre">main(String[]</span> <span class="pre">argv)</span></code> or
+initial code for Web-Application.</p>
 </section>
 <section id="configure-your-app">
 <h2>3. Configure your app<a class="headerlink" href="#configure-your-app" title="Permalink to this heading">¶</a></h2>

@@ -169,10 +169,10 @@ very comfortable. One must remember the order of arguments. In this case there i
 The class ``DbConnector`` in this pattern is only limited testable. It depends on the configuration in the file
 ``${HOME}/myapp/configuration-test.properties`` during the running of unit-test respectively the file
 ``${HOME}/myapp/configuration.properties`` during the productive running. So some edge-case such as wrong configuration,
-database does not exist, ect. cannot be tested in unittest. (At least without changine the configuration)
+database does not exist, ect. cannot be tested in unittest. (At least without changing the configuration)
 
-This pattern is only suitable in the initial code of a app, for example in the ``main(String[] argv)`` or
-initial code for webapp.
+This pattern is only suitable in the initial code of an app, for example in the ``main(String[] argv)`` or
+initial code for Web-Application.
 
 
 3. Configure your app
