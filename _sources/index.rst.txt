@@ -8,7 +8,6 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption:
    :hidden:
 
    quickstart
