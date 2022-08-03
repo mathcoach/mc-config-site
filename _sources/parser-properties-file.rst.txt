@@ -82,7 +82,7 @@ The two annotations ``${PWD}`` / ``$PWD`` and ``${HOME}`` / ``$HOME`` are resolv
 Java Process and the Home directory of the Java Process Owner respectively. So you shoud not use `PWD` and `HOME`
 as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
 System environment ``user.home`` and ``user.dir``. So it should work on platforms, which Java support.
-This library is howerver only tested on Linux.
+This library is howerver only tested with Linux.
 
 
 A Parameter can make a reference an other parameter in its value. The embeded parameter is also resolved to its value. Of course
