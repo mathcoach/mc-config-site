@@ -229,6 +229,7 @@ Your user, which just want to run your app, have to create only the file ``${HOM
 with appropriate configuration value of their computer.
 
 
+
 Where to go next
 ----------------
 
@@ -242,3 +243,13 @@ Indices and tables
 * :ref:`genindex`
 * `Javadoc <./apidocs/index.html>`_
 * :ref:`search`
+
+
+Classes in this section
+-----------------------
+
+.. [#f1] ``EnvConfiguration`` `<apidocs/de/htwsaar>`_
+.. [#f2] ``DynamicConfig`` `<apidocs/de/htwssar>`_
+
+
+
