@@ -47,7 +47,7 @@ Extend the Maven pom.xml with this dependency:
 2. Manage your configuration
 -----------------------------
 
-Create a Class to *manage* the single instance of ``EnvConfiguration``:
+Create one class to *manage* the single instance of ``EnvConfiguration``:
 
 
 .. code-block:: java
@@ -80,9 +80,9 @@ Create a Class to *manage* the single instance of ``EnvConfiguration``:
    }
 
 
-If a class needs to *consume* a configuration parameter, it can use one of these pattern:
+If a class needs to *consume* a configuration parameter, it can use one of these patterns:
 
-**Consume an EnvConfiguration**
+**Consume an instance of EnvConfiguration**
 
 .. code-block:: java
 
@@ -102,8 +102,8 @@ If a class needs to *consume* a configuration parameter, it can use one of these
    }
 
 
-This pattern can be used when a method need many information. In this case, it is not comfortable to put them to
-the argument list of the method. This Pattern is testable, using the class ``de.htwsaar.config.DynamicConfig``.
+This pattern can be used when a method needs many information. In this case, it is not comfortable to put them to
+the argument list of the method. This pattern is testable, using the class ``de.htwsaar.config.DynamicConfig``.
 
 
 **Parametrize Method**

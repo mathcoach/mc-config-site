@@ -66,7 +66,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 </section>
 <section id="manage-your-configuration">
 <h2>2. Manage your configuration<a class="headerlink" href="#manage-your-configuration" title="Permalink to this heading">¶</a></h2>
-<p>Create a Class to <em>manage</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code>:</p>
+<p>Create one class to <em>manage</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code>:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">de.htwsaar.config.ClasspathBasedConfig</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">de.htwsaar.config.EnvConfiguration</span><span class="p">;</span>
 
@@ -95,8 +95,8 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If a class needs to <em>consume</em> a configuration parameter, it can use one of these pattern:</p>
-<p><strong>Consume an EnvConfiguration</strong></p>
+<p>If a class needs to <em>consume</em> a configuration parameter, it can use one of these patterns:</p>
+<p><strong>Consume an instance of EnvConfiguration</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
@@ -113,8 +113,8 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This pattern can be used when a method need many information. In this case, it is not comfortable to put them to
-the argument list of the method. This Pattern is testable, using the class <code class="docutils literal notranslate"><span class="pre">de.htwsaar.config.DynamicConfig</span></code>.</p>
+<p>This pattern can be used when a method needs many information. In this case, it is not comfortable to put them to
+the argument list of the method. This pattern is testable, using the class <code class="docutils literal notranslate"><span class="pre">de.htwsaar.config.DynamicConfig</span></code>.</p>
 <p><strong>Parametrize Method</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
 
@@ -263,7 +263,7 @@ with appropriate configuration value of their computer.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">mc-config-tool documentation</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter"><code class="docutils literal notranslate"><span class="pre">mc-config-tool</span></code> documentation</a></li>
       <li>Next: <a href="parser-properties-file.html" title="next chapter">How Configuration File is Parsed</a></li>
   </ul></li>
 </ul>
