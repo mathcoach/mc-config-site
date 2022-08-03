@@ -1,6 +1,6 @@
-********************************
-How Configuration File is Parsed
-********************************
+**********************************
+How Configuration Files are Parsed
+**********************************
 
 
 The class ``ClasspathBasedConfiguration`` accepts a properties-file as configuration.

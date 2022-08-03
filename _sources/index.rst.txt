@@ -11,7 +11,7 @@ mc-config-tool documentation
    :hidden:
 
    quickstart
-   How Config File is Parsed <parser-properties-file>
+   How Config Files Parsed <parser-properties-file>
    Config File generate <gen-config>
    credits
 
