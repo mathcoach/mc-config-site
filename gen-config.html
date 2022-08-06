@@ -82,7 +82,7 @@ parameters to work properly.</p>
 </pre></div>
 </div>
 <p>The annotation <code class="docutils literal notranslate"><span class="pre">&#64;NeedConfig</span></code> can be used across Java Classes in the project. Documenting about how a class must be configured
-can be written near to code.</p>
+can be written near to this class.</p>
 <p>When these classes are compiled, these annotations are processed and some new classes are generated. This is especially useful if
 your project is a library. Your library client (in most case is an application) can not only collect its own configuration information,
 but alos information how to configure your library as its runtime.</p>
@@ -96,7 +96,7 @@ case of writing library.</p>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 </div>
-<p>For example this code can run at the start up phase of a program. It tries to configure it self. If
+<p>For example this code can run at the start-up phase of a program. It tries to configure it self. If
 the file in <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">=</span> <span class="pre">...</span></code> does not exist, it creates a template file.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// initialize app</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -155,7 +155,7 @@ the file in <code class="docutils literal notranslate"><span class="pre">import<
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This code example is kept simple. Its object is to demonstrate how to use the class <code class="docutils literal notranslate"><span class="pre">ConfigEntries.Entry</span></code> to
+<p>This code example is kept simple. Its object is to demonstrate how to use the class <code class="docutils literal notranslate"><span class="pre">ConfigEntries.Entry</span></code> <a class="footnote-reference brackets" href="#f5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> to
 get retrieve configuration information. You must adapt this example to your own situation.</p>
 </div>
 <p class="rubric">Footnotes</p>
@@ -177,7 +177,7 @@ get retrieve configuration information. You must adapt this example to your own 
 <p><code class="docutils literal notranslate"><span class="pre">ConfigCollector</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ConfigCollector.html">apidocs/de/htwsaar/config/ConfigCollector.html</a></p>
 </aside>
 <aside class="footnote brackets" id="f5" role="note">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">5</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">ConfigEntries.Entry</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/ConfigEntries.Entry.html">apidocs/de/htwsaar/config/ConfigEntries.Entry.html</a></p>
 </aside>
 <aside class="footnote brackets" id="f6" role="note">

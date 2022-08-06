@@ -57,7 +57,7 @@ parameters to work properly.
 
 
 The annotation ``@NeedConfig`` can be used across Java Classes in the project. Documenting about how a class must be configured
-can be written near to code.
+can be written near to this class.
 
 
 When these classes are compiled, these annotations are processed and some new classes are generated. This is especially useful if
@@ -77,7 +77,7 @@ case of writing library.
     </dependency>
 
 
-For example this code can run at the start up phase of a program. It tries to configure it self. If
+For example this code can run at the start-up phase of a program. It tries to configure it self. If
 the file in ``import = ...`` does not exist, it creates a template file.
 
 .. code-block:: java
@@ -139,7 +139,7 @@ the file in ``import = ...`` does not exist, it creates a template file.
 
 
 .. note::
-    This code example is kept simple. Its object is to demonstrate how to use the class ``ConfigEntries.Entry`` to
+    This code example is kept simple. Its object is to demonstrate how to use the class ``ConfigEntries.Entry`` [#f5]_ to
     get retrieve configuration information. You must adapt this example to your own situation.
 
 
