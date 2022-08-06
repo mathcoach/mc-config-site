@@ -44,7 +44,7 @@ outside of the source code, say in</p>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">${HOME}</span></code> denotes the home-directory of the user, who starts the Java-process. It is resolved in Linux
 mostly to <code class="docutils literal notranslate"><span class="pre">/home/userid</span></code> and in Windows mostly to <code class="docutils literal notranslate"><span class="pre">C:\\Users\\userid</span></code>.</p>
-<p>If your app is delivered to users, and runs somewhere else, so users can create a configuration file
+<p>If your app is delivered to users, and runs on other machines, so users can create a configuration file
 <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code> on their computer.</p>
 <section id="update-maven-pom-xml">
 <h2>1. Update Maven pom.xml<a class="headerlink" href="#update-maven-pom-xml" title="Permalink to this heading">¶</a></h2>
@@ -97,7 +97,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 </div>
 <p>If a class needs to <em>consume</em> a configuration parameter, it can use one of these patterns:</p>
 <p><strong>Consume an instance of EnvConfiguration</strong></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>

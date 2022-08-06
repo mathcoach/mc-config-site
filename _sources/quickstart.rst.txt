@@ -16,7 +16,7 @@ outside of the source code, say in
 ``${HOME}`` denotes the home-directory of the user, who starts the Java-process. It is resolved in Linux
 mostly to ``/home/userid`` and in Windows mostly to ``C:\\Users\\userid``.
 
-If your app is delivered to users, and runs somewhere else, so users can create a configuration file
+If your app is delivered to users, and runs on other machines, so users can create a configuration file
 ``${HOME}/myapp/configuration.properties`` on their computer.
 
 
@@ -86,7 +86,7 @@ If a class needs to *consume* a configuration parameter, it can use one of these
 
 .. code-block:: java
 
-   public final class DbConnector {
+   class DbConnector {
 
        public static final String DB_URL_KEY = "db.url";
        public static final String DB_USER_KEY = "db.username";
