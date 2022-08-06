@@ -101,7 +101,7 @@ the file in ``import = ...`` does not exist, it creates a template file.
             p.println("# copy this template to " + configPath.toString() );
             p.println();
             usedConfigParameter().forEach( (key, value) ->  {
-                p// config template
+                // config template
                 p.print(key);
                 p.println(" = ");
                 // comment about used in
