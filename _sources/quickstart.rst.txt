@@ -180,7 +180,7 @@ initial code for Web-Application.
 
 **You as lead developer :)**
 
-Create a file called ``configuration-test.properties`` in the folder ``src/test/resources``:
+Create a file called ``configuration-test.properties`` in the folder ``src/test/resources`` of your project:
 
 
 .. code-block:: properties
@@ -198,7 +198,7 @@ This file imports the configuration file for unit test:
    db.password = some-secret-password
 
 
-Create a file called ``configuration.properties`` in the folder ``src/main/resources``:
+Create a file called ``configuration.properties`` in the folder ``src/main/resources`` of your project:
 
 .. code-block:: properties
 
