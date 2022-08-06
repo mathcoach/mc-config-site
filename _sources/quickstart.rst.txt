@@ -47,7 +47,7 @@ Extend the Maven pom.xml with this dependency:
 2. Manage your configuration
 ============================
 
-Create one class to *provide* the single instance of ``EnvConfiguration``:
+Create one class to *provide* the single instance of ``EnvConfiguration`` [#f1]_:
 
 
 .. code-block:: java
@@ -103,7 +103,7 @@ If a class needs to *consume* a configuration parameter, it can use one of these
 
 
 This pattern can be used when a method needs many information. In this case, it is not comfortable to put them to
-the argument list of the method. This pattern is testable, using the class ``de.htwsaar.config.DynamicConfig``.
+the argument list of the method. This pattern is testable, using the class ``de.htwsaar.config.DynamicConfig`` [#f2]_.
 
 
 **Parametrize Method**
@@ -225,7 +225,7 @@ Other developer in your teams have to create both files
 
 **Your Software user**
 
-Your user, which just want to run your app, have to create only the file ``${HOME}/myapp/configuration.properties``
+Your users, which just want to run your app, have to create only the file ``${HOME}/myapp/configuration.properties``
 with appropriate configuration value of their computer.
 
 

@@ -66,7 +66,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 </section>
 <section id="manage-your-configuration">
 <h2>2. Manage your configuration<a class="headerlink" href="#manage-your-configuration" title="Permalink to this heading">¶</a></h2>
-<p>Create one class to <em>provide</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code>:</p>
+<p>Create one class to <em>provide</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code> <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">de.htwsaar.config.ClasspathBasedConfig</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">de.htwsaar.config.EnvConfiguration</span><span class="p">;</span>
 
@@ -114,7 +114,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 </pre></div>
 </div>
 <p>This pattern can be used when a method needs many information. In this case, it is not comfortable to put them to
-the argument list of the method. This pattern is testable, using the class <code class="docutils literal notranslate"><span class="pre">de.htwsaar.config.DynamicConfig</span></code>.</p>
+the argument list of the method. This pattern is testable, using the class <code class="docutils literal notranslate"><span class="pre">de.htwsaar.config.DynamicConfig</span></code> <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
 <p><strong>Parametrize Method</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
 
@@ -208,7 +208,7 @@ initial code for Web-Application.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code> to run the app it selft on their computer.</p></li>
 </ul>
 <p><strong>Your Software user</strong></p>
-<p>Your user, which just want to run your app, have to create only the file <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code>
+<p>Your users, which just want to run your app, have to create only the file <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code>
 with appropriate configuration value of their computer.</p>
 <section id="where-to-go-next">
 <h3>Where to go next<a class="headerlink" href="#where-to-go-next" title="Permalink to this heading">¶</a></h3>
@@ -229,11 +229,11 @@ with appropriate configuration value of their computer.</p>
 <h3>Classes in this section<a class="headerlink" href="#classes-in-this-section" title="Permalink to this heading">¶</a></h3>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="note">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/EnvConfiguration.html">apidocs/de/htwsaar/config/EnvConfiguration.html</a></p>
 </aside>
 <aside class="footnote brackets" id="f2" role="note">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">DynamicConfig</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/DynamicConfig.html">apidocs/de/htwsaar/config/DynamicConfig.html</a></p>
 </aside>
 </aside>
