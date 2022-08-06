@@ -65,7 +65,7 @@ parameters to work properly.</p>
     <span class="n">name</span> <span class="o">=</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_PASS_KEY</span><span class="p">,</span>
     <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Password of user to connect to database configured by &quot;</span> <span class="o">+</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_URL_KEY</span>
 <span class="p">)</span>
-<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>
@@ -81,7 +81,7 @@ parameters to work properly.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The annotation <code class="docutils literal notranslate"><span class="pre">NeedConfig</span></code> can be used across Java Classes in the project. Documenting about how a class must be configured
+<p>The annotation <code class="docutils literal notranslate"><span class="pre">&#64;NeedConfig</span></code> can be used across Java Classes in the project. Documenting about how a class must be configured
 can be write near to code.</p>
 <p>When these classes are compiled, these annotations are processed and some new classes are generated. This is especially useful if
 your project is a library. Your library client (in most case is an application) can not only collect its own configuration information,

@@ -40,7 +40,7 @@ parameters to work properly.
        name = DbConnector.DB_PASS_KEY,
        description = "Password of user to connect to database configured by " + DbConnector.DB_URL_KEY
    )
-   public final class DbConnector {
+   class DbConnector {
 
        public static final String DB_URL_KEY = "db.url";
        public static final String DB_USER_KEY = "db.username";
@@ -56,7 +56,7 @@ parameters to work properly.
    }
 
 
-The annotation ``NeedConfig`` can be used across Java Classes in the project. Documenting about how a class must be configured
+The annotation ``@NeedConfig`` can be used across Java Classes in the project. Documenting about how a class must be configured
 can be write near to code.
 
 
