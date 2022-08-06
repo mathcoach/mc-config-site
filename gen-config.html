@@ -47,8 +47,8 @@ to your dependency:</p>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 </div>
-<p>Now you can use the annotations <code class="docutils literal notranslate"><span class="pre">NeedConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">NeedConfigs</span></code> to notate classes, which need one or more configuration
-parameter to work proper.</p>
+<p>Now you can use the annotations <code class="docutils literal notranslate"><span class="pre">NeedConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">NeedConfigs</span></code> <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> to denote classes, which need one or more configuration
+parameters to work properly.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@NeedConfig</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">DbConnector</span><span class="p">.</span><span class="na">DB_URL_KEY</span><span class="p">,</span>
     <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;JDBC URL to database for myapp&quot;</span><span class="p">,</span>
@@ -161,7 +161,7 @@ get retrieve configuration information. You must adapt this example to your own 
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="f1" role="note">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">&#64;NeedConfig</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/annotation/NeedConfig.html">apidocs/de/htwsaar/config/annotation/NeedConfig.html</a></p>
 </aside>
 <aside class="footnote brackets" id="f2" role="note">

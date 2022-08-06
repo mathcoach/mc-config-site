@@ -39,21 +39,20 @@ a valid properties file is always a syntactical valid configuration file.</p>
 <section id="whitespaces-handling">
 <h2>Whitespaces handling<a class="headerlink" href="#whitespaces-handling" title="Permalink to this heading">¶</a></h2>
 <p>Leading and trailing whitespaces in values are removed. This behavior matches our requirement. It avoids ambiguous values
-and let users detect error in configuration file fast. In this example</p>
+and lets users detect error in configuration file fast. In this example</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">weird-config</span> <span class="o">=</span> <span class="s">\t</span>
 </pre></div>
 </div>
 <p>the value of <code class="docutils literal notranslate"><span class="pre">weird-config</span></code> is the empty string.</p>
-<p>If you really want a configuration value as whitespaces, just write explcit what you need. For example, your app
+<p>If you really want a configuration value as whitespaces, just write explicit what you need. For example, your app
 must parse a CSV file, which either uses one space or tab or an other visible character (e.g. <code class="docutils literal notranslate"><span class="pre">,</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code>) for column
 separator, you can write configuration like this:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># if this set to true, use space for column separator,</span>
-<span class="c"># ignore other configuration CSV column separator</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># if this is set to true, use space for column separator,</span>
+<span class="c"># ignore other configuration for CSV column separator</span>
 <span class="na">space_as_separator</span> <span class="o">=</span> <span class="s">false</span>
 
 <span class="c"># if space_as_separator not set|false and this set to true , use tab for column separator,</span>
-<span class="c"># ignore other configuration for</span>
-<span class="c"># CSV column separator</span>
+<span class="c"># ignore other configuration for CSV column separator</span>
 <span class="na">tab_as_separator</span> <span class="o">=</span> <span class="s">false</span>
 
 <span class="c"># if both space_as_separator and tab_as_separator are not set or are parsed to false,</span>

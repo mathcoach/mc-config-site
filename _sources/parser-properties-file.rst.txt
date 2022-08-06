@@ -12,7 +12,7 @@ Whitespaces handling
 ====================
 
 Leading and trailing whitespaces in values are removed. This behavior matches our requirement. It avoids ambiguous values
-and let users detect error in configuration file fast. In this example
+and lets users detect error in configuration file fast. In this example
 
 .. code-block:: properties
 
@@ -21,19 +21,18 @@ and let users detect error in configuration file fast. In this example
 the value of ``weird-config`` is the empty string.
 
 
-If you really want a configuration value as whitespaces, just write explcit what you need. For example, your app
+If you really want a configuration value as whitespaces, just write explicit what you need. For example, your app
 must parse a CSV file, which either uses one space or tab or an other visible character (e.g. ``,`` or ``;``) for column
 separator, you can write configuration like this:
 
 .. code-block:: properties
 
-    # if this set to true, use space for column separator,
-    # ignore other configuration CSV column separator
+    # if this is set to true, use space for column separator,
+    # ignore other configuration for CSV column separator
     space_as_separator = false
 
     # if space_as_separator not set|false and this set to true , use tab for column separator,
-    # ignore other configuration for
-    # CSV column separator
+    # ignore other configuration for CSV column separator
     tab_as_separator = false
 
     # if both space_as_separator and tab_as_separator are not set or are parsed to false,

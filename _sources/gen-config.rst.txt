@@ -19,8 +19,8 @@ to your dependency:
         <version>${mc.config.version}</version>
     </dependency>
 
-Now you can use the annotations ``NeedConfig`` and ``NeedConfigs`` to notate classes, which need one or more configuration
-parameter to work proper.
+Now you can use the annotations ``NeedConfig`` and ``NeedConfigs`` [#f1]_ to denote classes, which need one or more configuration
+parameters to work properly.
 
 .. code-block:: java
 
