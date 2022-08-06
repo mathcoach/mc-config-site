@@ -138,9 +138,9 @@ the argument list of the method. This pattern is testable, using the class ``de.
    }
 
 
-The class ``DbConnector`` in this pattern is also testable, the use of method ``DbConnector.getDataSource`` is not
-very comfortable. One must remember the order of arguments. In this case there is only 3 arguments. When more than
-3 configuration values are needed, use the first pattern.
+The class ``DbConnector`` in this pattern is also testable, calling the method ``DbConnector.getDataSource`` is not
+user-frendly. One must remember the order of 3 arguments. When  more than configuration values are needed,
+the first pattern is the better choice in most cases.
 
 
 **Directly call AppConfig.getConfig()**

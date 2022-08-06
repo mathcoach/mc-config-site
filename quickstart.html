@@ -144,9 +144,9 @@ the argument list of the method. This pattern is testable, using the class <code
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The class <code class="docutils literal notranslate"><span class="pre">DbConnector</span></code> in this pattern is also testable, the use of method <code class="docutils literal notranslate"><span class="pre">DbConnector.getDataSource</span></code> is not
-very comfortable. One must remember the order of arguments. In this case there is only 3 arguments. When more than
-3 configuration values are needed, use the first pattern.</p>
+<p>The class <code class="docutils literal notranslate"><span class="pre">DbConnector</span></code> in this pattern is also testable, calling the method <code class="docutils literal notranslate"><span class="pre">DbConnector.getDataSource</span></code> is not
+user-frendly. One must remember the order of 3 arguments. When  more than configuration values are needed,
+the first pattern is the better choice in most cases.</p>
 <p><strong>Directly call AppConfig.getConfig()</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Anti-pattern!</span>
 <span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
