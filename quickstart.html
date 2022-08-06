@@ -42,15 +42,15 @@ outside of the source code, say in</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code> for running the app locally, and</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration-test.properties</span></code> for running the unit test of the app, also locallly.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">${HOME}</span></code> is an annotation for the home-directory of the user, who starts the Java-process. It is resolved in Linux
+<p><code class="docutils literal notranslate"><span class="pre">${HOME}</span></code> denotes the home-directory of the user, who starts the Java-process. It is resolved in Linux
 mostly to <code class="docutils literal notranslate"><span class="pre">/home/userid</span></code> and in Windows mostly to <code class="docutils literal notranslate"><span class="pre">C:\\Users\\userid</span></code>.</p>
-<p>If your app is distributed, and runs somewhere else, so your users can create a configuration file
+<p>If your app is delivered to users, and runs somewhere else, so users can create a configuration file
 <code class="docutils literal notranslate"><span class="pre">${HOME}/myapp/configuration.properties</span></code> on their computer.</p>
 <section id="update-maven-pom-xml">
 <h2>1. Update Maven pom.xml<a class="headerlink" href="#update-maven-pom-xml" title="Permalink to this heading">¶</a></h2>
 <p>Extend the Maven pom.xml with this dependency:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;properties&gt;</span>
-    <span class="nt">&lt;mc.config.verion&gt;</span>3.0.5<span class="nt">&lt;/mc.config.version&gt;</span>
+    <span class="nt">&lt;mc.config.verion&gt;</span>3.0.6<span class="nt">&lt;/mc.config.version&gt;</span>
 <span class="nt">&lt;/properties&gt;</span>
 
 <span class="nt">&lt;dependencies&gt;</span>
@@ -66,7 +66,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 </section>
 <section id="manage-your-configuration">
 <h2>2. Manage your configuration<a class="headerlink" href="#manage-your-configuration" title="Permalink to this heading">¶</a></h2>
-<p>Create one class to <em>manage</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code>:</p>
+<p>Create one class to <em>provide</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code>:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">de.htwsaar.config.ClasspathBasedConfig</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">de.htwsaar.config.EnvConfiguration</span><span class="p">;</span>
 
@@ -79,7 +79,7 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="n">EnvConfiguration</span> <span class="nf">getConfig</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">config</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">synchronize</span><span class="p">(</span><span class="n">AppConfig</span><span class="p">.</span><span class="na">class</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">synchronized</span> <span class="p">(</span><span class="n">AppConfig</span><span class="p">.</span><span class="na">class</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClasspathBasedConfiguration</span><span class="p">(</span>
                     <span class="n">TEST_CONFIG</span><span class="p">,</span>        <span class="c1">// configuration for test environment</span>
                     <span class="n">PRODUCTIVE_CONFIG</span>   <span class="c1">// configuration for productive environment</span>
