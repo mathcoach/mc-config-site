@@ -1,10 +1,11 @@
 ## MC Config Documentation
 
 
-### API 
+### API
 
-Link 
+[apidocs](./apidocs/index.html)
 
-* [apidocs](./apidocs/index.html)
+### Github Page
 
-* [Github Page](https://mathcoach.github.io/mc-config-site/)
+[Github Page](https://mathcoach.github.io/mc-config-site/)
+
