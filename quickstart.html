@@ -1,25 +1,23 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Quickstart in three steps &#8212; mc-config-tool 3.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="How Configuration Files are Parsed" href="parser-properties-file.html" />
     <link rel="prev" title="mc-config-tool documentation" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -29,6 +27,8 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <section id="quickstart-in-three-steps">
@@ -50,16 +50,16 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 <h2>1. Update Maven pom.xml<a class="headerlink" href="#update-maven-pom-xml" title="Permalink to this heading">¶</a></h2>
 <p>Extend the Maven pom.xml with this dependency:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;properties&gt;</span>
-    <span class="nt">&lt;mc.config.verion&gt;</span>3.0.6<span class="nt">&lt;/mc.config.version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mc.config.verion&gt;</span>3.0.6<span class="nt">&lt;/mc.config.version&gt;</span>
 <span class="nt">&lt;/properties&gt;</span>
 
 <span class="nt">&lt;dependencies&gt;</span>
-   <span class="c">&lt;!-- others dependencies --&gt;</span>
-   <span class="nt">&lt;dependency&gt;</span>
-       <span class="nt">&lt;groupId&gt;</span>io.github.mathcoach<span class="nt">&lt;/groupId&gt;</span>
-       <span class="nt">&lt;artifactId&gt;</span>mc-config-tool<span class="nt">&lt;/artifactId&gt;</span>
-       <span class="nt">&lt;version&gt;</span>${mc.config.version}<span class="nt">&lt;/version&gt;</span>
-   <span class="nt">&lt;/dependency&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- others dependencies --&gt;</span>
+<span class="w">   </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">       </span><span class="nt">&lt;groupId&gt;</span>io.github.mathcoach<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">       </span><span class="nt">&lt;artifactId&gt;</span>mc-config-tool<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">       </span><span class="nt">&lt;version&gt;</span>${mc.config.version}<span class="nt">&lt;/version&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;/dependencies&gt;</span>
 </pre></div>
 </div>
@@ -67,80 +67,80 @@ mostly to <code class="docutils literal notranslate"><span class="pre">/home/use
 <section id="manage-your-configuration">
 <h2>2. Manage your configuration<a class="headerlink" href="#manage-your-configuration" title="Permalink to this heading">¶</a></h2>
 <p>Create one class to <em>provide</em> the single instance of <code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code> <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">de.htwsaar.config.ClasspathBasedConfig</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">de.htwsaar.config.EnvConfiguration</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">de.htwsaar.config.ClasspathBasedConfig</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">de.htwsaar.config.EnvConfiguration</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">AppConfig</span> <span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AppConfig</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TEST_CONFIG</span> <span class="o">=</span> <span class="s">&quot;configuration-test.properties&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">PRODUCTIVE_CONFIG</span> <span class="o">=</span> <span class="s">&quot;configuration.properties&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TEST_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;configuration-test.properties&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">PRODUCTIVE_CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;configuration.properties&quot;</span><span class="p">;</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="n">EvnConfiguration</span> <span class="n">config</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">EvnConfiguration</span><span class="w"> </span><span class="n">config</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="n">EnvConfiguration</span> <span class="nf">getConfig</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">config</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">synchronized</span> <span class="p">(</span><span class="n">AppConfig</span><span class="p">.</span><span class="na">class</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClasspathBasedConfiguration</span><span class="p">(</span>
-                    <span class="n">TEST_CONFIG</span><span class="p">,</span>        <span class="c1">// configuration for test environment</span>
-                    <span class="n">PRODUCTIVE_CONFIG</span>   <span class="c1">// configuration for productive environment</span>
-               <span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">config</span><span class="p">;</span>
-   <span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">EnvConfiguration</span><span class="w"> </span><span class="nf">getConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">config</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">AppConfig</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClasspathBasedConfiguration</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">TEST_CONFIG</span><span class="p">,</span><span class="w">        </span><span class="c1">// configuration for test environment</span>
+<span class="w">                    </span><span class="n">PRODUCTIVE_CONFIG</span><span class="w">   </span><span class="c1">// configuration for productive environment</span>
+<span class="w">               </span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">config</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
 
-   <span class="kd">private</span> <span class="nf">AppConfig</span><span class="p">()</span> <span class="p">{</span>
-      <span class="c1">//prevent to create an instance of this class.</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="nf">AppConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">//prevent to create an instance of this class.</span>
+<span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>If a class needs to <em>consume</em> a configuration parameter, it can use one of these patterns:</p>
 <p><strong>Consume an instance of EnvConfiguration</strong></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASS_KEY</span> <span class="o">=</span> <span class="s">&quot;db.password&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_URL_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.url&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_USER_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.username&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_PASS_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.password&quot;</span><span class="p">;</span>
 
-    <span class="n">DataSource</span> <span class="nf">getDataSource</span><span class="p">(</span><span class="n">EnvConfiguration</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">String</span> <span class="n">dbUrl</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbPass</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
-        <span class="c1">// create an instance of DataSource using variables dbUrl, dbUser, dbPass</span>
-        <span class="c1">// ....</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="n">DataSource</span><span class="w"> </span><span class="nf">getDataSource</span><span class="p">(</span><span class="n">EnvConfiguration</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbPass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// create an instance of DataSource using variables dbUrl, dbUser, dbPass</span>
+<span class="w">        </span><span class="c1">// ....</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>This pattern can be used when a method needs many information. In this case, it is not comfortable to put them to
 the argument list of the method. This pattern is testable, using the class <code class="docutils literal notranslate"><span class="pre">de.htwsaar.config.DynamicConfig</span></code> <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
 <p><strong>Parametrize Method</strong></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DbConnector</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="n">DataSource</span> <span class="nf">getDataSource</span><span class="p">(</span><span class="n">String</span> <span class="n">dbUrl</span><span class="p">,</span> <span class="n">String</span> <span class="n">dbUser</span><span class="p">,</span> <span class="n">String</span> <span class="n">dbPassword</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// create an instance of DataSource using the arguments</span>
-        <span class="c1">// ...</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="n">DataSource</span><span class="w"> </span><span class="nf">getDataSource</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dbUser</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dbPassword</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// create an instance of DataSource using the arguments</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyApp</span> <span class="p">{</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyApp</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASS_KEY</span> <span class="o">=</span> <span class="s">&quot;db.password&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_URL_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.url&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_USER_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.username&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_PASS_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.password&quot;</span><span class="p">;</span>
 
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-        <span class="c1">// somewhere in main(String[] argv)</span>
-        <span class="n">EvnConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">AppConfig</span><span class="p">.</span><span class="na">getConfig</span><span class="p">();</span>
-        <span class="n">String</span> <span class="n">dbUrl</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbPass</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
-        <span class="n">DbConnector</span> <span class="n">connector</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DbConnector</span><span class="p">();</span>
-        <span class="n">DataSource</span> <span class="o">=</span> <span class="n">connector</span><span class="p">.</span><span class="na">getDataSource</span><span class="p">(</span><span class="n">dbUrl</span><span class="p">,</span> <span class="n">dbUser</span><span class="p">,</span> <span class="n">dbPass</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">        </span><span class="c1">// somewhere in main(String[] argv)</span>
+<span class="w">        </span><span class="n">EvnConfiguration</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AppConfig</span><span class="p">.</span><span class="na">getConfig</span><span class="p">();</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbPass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DbConnector</span><span class="w"> </span><span class="n">connector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DbConnector</span><span class="p">();</span>
+<span class="w">        </span><span class="n">DataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">connector</span><span class="p">.</span><span class="na">getDataSource</span><span class="p">(</span><span class="n">dbUrl</span><span class="p">,</span><span class="w"> </span><span class="n">dbUser</span><span class="p">,</span><span class="w"> </span><span class="n">dbPass</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -149,21 +149,21 @@ user-frendly. One must remember the order of 3 arguments. When  more than config
 the first pattern is the better choice in most cases.</p>
 <p><strong>Directly call AppConfig.getConfig()</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Anti-pattern!</span>
-<span class="kd">class</span> <span class="nc">DbConnector</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nc">DbConnector</span><span class="w"> </span><span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_URL_KEY</span> <span class="o">=</span> <span class="s">&quot;db.url&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_USER_KEY</span> <span class="o">=</span> <span class="s">&quot;db.username&quot;</span><span class="p">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DB_PASS_KEY</span> <span class="o">=</span> <span class="s">&quot;db.password&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_URL_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.url&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_USER_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.username&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DB_PASS_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;db.password&quot;</span><span class="p">;</span>
 
 
-    <span class="n">DataSource</span> <span class="nf">getDataSource</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">EvnConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="n">AppConfig</span><span class="p">.</span><span class="na">getConfig</span><span class="p">();</span>
-        <span class="n">String</span> <span class="n">dbUrl</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbUser</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">dbPass</span> <span class="o">=</span> <span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
-        <span class="c1">// create an instance of DataSource using variables dbUrl, dbUser, dbPass</span>
-        <span class="c1">// ...</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="n">DataSource</span><span class="w"> </span><span class="nf">getDataSource</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">EvnConfiguration</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AppConfig</span><span class="p">.</span><span class="na">getConfig</span><span class="p">();</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_URL_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_USER_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">dbPass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="na">getConfigValue</span><span class="p">(</span><span class="n">DB_PASS_KEY</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// create an instance of DataSource using variables dbUrl, dbUser, dbPass</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -178,27 +178,27 @@ initial code for Web-Application.</p>
 <h2>3. Configure your app<a class="headerlink" href="#configure-your-app" title="Permalink to this heading">¶</a></h2>
 <p><strong>You as lead developer :)</strong></p>
 <p>Create a file called <code class="docutils literal notranslate"><span class="pre">configuration-test.properties</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">src/test/resources</span></code> of your project:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># File src/test/resources/configuration-test.properties</span>
-<span class="na">import</span> <span class="o">=</span> <span class="s">${HOME}/myapp/configuration-test.properties</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c1"># File src/test/resources/configuration-test.properties</span>
+<span class="na">import</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${HOME}/myapp/configuration-test.properties</span>
 </pre></div>
 </div>
 <p>This file imports the configuration file for unit test:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># File ${HOME}/myapp/configuration-test.properties</span>
-<span class="na">db.url</span> <span class="o">=</span> <span class="s">jdbc:postgresql:myapp-test</span>
-<span class="na">db.username</span> <span class="o">=</span> <span class="s">myapp-user</span>
-<span class="na">db.password</span> <span class="o">=</span> <span class="s">some-secret-password</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c1"># File ${HOME}/myapp/configuration-test.properties</span>
+<span class="na">db.url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jdbc:postgresql:myapp-test</span>
+<span class="na">db.username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">myapp-user</span>
+<span class="na">db.password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">some-secret-password</span>
 </pre></div>
 </div>
 <p>Create a file called <code class="docutils literal notranslate"><span class="pre">configuration.properties</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">src/main/resources</span></code> of your project:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># File src/main/resources/configuration.properties</span>
-<span class="na">import</span> <span class="o">=</span> <span class="s">${HOME}/myapp/configuration.properties</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c1"># File src/main/resources/configuration.properties</span>
+<span class="na">import</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${HOME}/myapp/configuration.properties</span>
 </pre></div>
 </div>
 <p>This file imports the configuration file for the app as runtime on your developing computer.</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c"># File ${HOME}/myapp/configuration.properties</span>
-<span class="na">db.url</span> <span class="o">=</span> <span class="s">jdbc:postgresql:myapp</span>
-<span class="na">db.username</span> <span class="o">=</span> <span class="s">myapp</span>
-<span class="na">db.password</span> <span class="o">=</span> <span class="s">other-secret-password</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="c1"># File ${HOME}/myapp/configuration.properties</span>
+<span class="na">db.url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">jdbc:postgresql:myapp</span>
+<span class="na">db.username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">myapp</span>
+<span class="na">db.password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">other-secret-password</span>
 </pre></div>
 </div>
 <p><strong>Other developers</strong></p>
@@ -228,11 +228,11 @@ with appropriate configuration value of their computer.</p>
 <section id="classes-in-this-section">
 <h3>Classes in this section<a class="headerlink" href="#classes-in-this-section" title="Permalink to this heading">¶</a></h3>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f1" role="note">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">EnvConfiguration</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/EnvConfiguration.html">apidocs/de/htwsaar/config/EnvConfiguration.html</a></p>
 </aside>
-<aside class="footnote brackets" id="f2" role="note">
+<aside class="footnote brackets" id="f2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p><code class="docutils literal notranslate"><span class="pre">DynamicConfig</span></code> <a class="reference external" href="apidocs/de/htwsaar/config/DynamicConfig.html">apidocs/de/htwsaar/config/DynamicConfig.html</a></p>
 </aside>
@@ -243,6 +243,7 @@ with appropriate configuration value of their computer.</p>
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -288,6 +289,14 @@ with appropriate configuration value of their computer.</p>
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -296,8 +305,8 @@ with appropriate configuration value of their computer.</p>
       &copy;2022, Hong-Phuc Bui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/quickstart.rst.txt"
