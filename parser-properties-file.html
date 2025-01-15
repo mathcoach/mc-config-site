@@ -1,16 +1,18 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>How Configuration Files are Parsed &#8212; mc-config-tool 4.2.4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Semi-automatic generation of Configuration File" href="gen-config.html" />
@@ -32,12 +34,12 @@
           <div class="body" role="main">
             
   <section id="how-configuration-files-are-parsed">
-<h1>How Configuration Files are Parsed<a class="headerlink" href="#how-configuration-files-are-parsed" title="Permalink to this heading">¶</a></h1>
+<h1>How Configuration Files are Parsed<a class="headerlink" href="#how-configuration-files-are-parsed" title="Permalink to this headline">¶</a></h1>
 <p>The class <code class="docutils literal notranslate"><span class="pre">ClasspathBasedConfiguration</span></code> accepts a properties-file as configuration.
 It also uses <code class="docutils literal notranslate"><span class="pre">java.util.Properties.load(InputStream)</span></code> to parsed the configuration file. So
 a valid properties file is always a syntactical valid configuration file.</p>
 <section id="whitespaces-handling">
-<h2>Whitespaces handling<a class="headerlink" href="#whitespaces-handling" title="Permalink to this heading">¶</a></h2>
+<h2>Whitespaces handling<a class="headerlink" href="#whitespaces-handling" title="Permalink to this headline">¶</a></h2>
 <p>Leading and trailing whitespaces in values are removed. This behavior matches our requirement. It avoids ambiguous values
 and lets users detect error in configuration file fast. In this example</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">weird-config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="se">\t</span>
@@ -91,7 +93,7 @@ You must check the configured parameter in you desired order:</p>
 </div>
 </section>
 <section id="substitution">
-<h2>Substitution<a class="headerlink" href="#substitution" title="Permalink to this heading">¶</a></h2>
+<h2>Substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h2>
 <p>The two annotations <code class="docutils literal notranslate"><span class="pre">${PWD}</span></code> / <code class="docutils literal notranslate"><span class="pre">$PWD</span></code> and <code class="docutils literal notranslate"><span class="pre">${HOME}</span></code> / <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> are resolved to Working directory of the
 Java Process and the Home directory of the Java Process Owner respectively. So you shoud not use <cite>PWD</cite> and <cite>HOME</cite>
 as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
@@ -154,7 +156,7 @@ For example:</p>
     </form>
     </div>
 </div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -171,8 +173,8 @@ For example:</p>
       &copy;2024, Hong-Phuc Bui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/parser-properties-file.rst.txt"
