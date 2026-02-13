@@ -1,18 +1,19 @@
 **********************************
-How Configuration Files are Parsed
+How Configuration Files Are Parsed
 **********************************
 
 
 The class ``ClasspathBasedConfiguration`` accepts a properties-file as configuration.
-It also uses ``java.util.Properties.load(InputStream)`` to parsed the configuration file. So
-a valid properties file is always a syntactical valid configuration file.
+It utilizes ``java.util.Properties.load(InputStream)`` for parsing. 
+Consequently, any syntactically valid properties file will also be a valid configuration file for this class.
 
 
 Whitespaces handling
 ====================
 
-Leading and trailing whitespaces in values are removed. This behavior matches our requirement. It avoids ambiguous values
-and lets users detect error in configuration file fast. In this example
+Leading and trailing whitespaces in configuration values are automatically removed. 
+This behavior aligns with our requirements by preventing ambiguous values and helping users quickly identify errors in their configuration files.
+In this example
 
 .. code-block:: properties
 
@@ -21,14 +22,15 @@ and lets users detect error in configuration file fast. In this example
 the value of ``weird-config`` is the empty string.
 
 
-If you really want a configuration value as whitespaces, just write explicit what you need. For example, your app
-must parse a CSV file, which either uses one space or tab or an other visible character (e.g. ``,`` or ``;``) for column
-separator, you can write configuration like this:
+If you explicitly need a configuration value consisting solely of whitespaces, you must specify it precisely. 
+For example, your app must parse a CSV file, 
+where column separators can be a space, a tab, or another visible character (e.g. ``,`` or ``;``) for column separator, 
+you can structure your configuration as follows:
 
 .. code-block:: properties
 
-    # if this is set to true, use space for column separator,
-    # ignore other configuration for CSV column separator
+    # If set to true, use space for the column separator 
+    # and ignore other CSV separator configurations.
     space_as_separator = false
 
     # if space_as_separator not set|false and this set to true , use tab for column separator,
@@ -39,8 +41,9 @@ separator, you can write configuration like this:
     # use the value of this configuration for CSV column separator
     separator_char = ;
 
-of course you must write code to evaluate the configuration. ``EnvConfiguration`` provides all configured parameters.
-You must check the configured parameter in you desired order:
+Naturally, you will need to implement code to evaluate these configuration parameters. 
+The ``EnvConfiguration`` class provides all configured parameters,
+which you should check in your desired order:
 
 
 .. code-block:: java
@@ -65,7 +68,7 @@ You must check the configured parameter in you desired order:
         return config.getConfigValue(SEPARATOR_CHAR_CONFIG, (param, value) -> {
             try {
                 return value.charAt(0);
-            } catch(StringIndexOutOfBound ex) {
+            } catch(StringIndexOutOfBoundsException ex) {
                 // in the case, that the configuration is an empty string
                 return DEFAULT_SEPARATOR;
             }
@@ -77,14 +80,15 @@ You must check the configured parameter in you desired order:
 Substitution
 ============
 
-The two annotations ``${PWD}`` / ``$PWD`` and ``${HOME}`` / ``$HOME`` are resolved to Working directory of the
-Java Process and the Home directory of the Java Process Owner respectively. So you shoud not use `PWD` and `HOME`
-as your configuration parameter. The mechanic to resolve these annotations relies on Java mechanic to resolve
-System environment ``user.home`` and ``user.dir``. So it should work on platforms, which Java support.
-This library is howerver only tested with Linux.
+The two annotations ``${PWD}`` / ``$PWD`` and ``${HOME}`` / ``$HOME`` are resolved to the Working directory of the Java Process and the Home directory of the Java Process Owner respectively. 
+Therefore, you shoud avoid using `PWD` and `HOME` as your own configuration parameter keys. 
+The mechanism for resolving these annotations relies on Java's system environment properties ``user.home`` and ``user.dir``. 
+Thus, it should function on platforms supported by Java.
+*Please note: This library has only been tested with Linux.*
 
 
-A Parameter can make a reference to an other parameter in its value. The embeded parameter is also resolved to its value.
+A parameter can reference another parameter within its value, 
+and the embedded parameter will also be resolved to its corresponding value.
 For example:
 
 .. code-block:: properties
@@ -93,4 +97,4 @@ For example:
     myapp.data = ${myapp.base}/data
     myapp.conf = ${myapp.base}/conf
 
-Of course you cannot make a circular reference, directly or indirectly. In this case an exception is thrown.
+Circular references, whether direct or indirect, are not permitted and will result in an exception being thrown.

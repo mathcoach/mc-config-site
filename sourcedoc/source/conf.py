@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'mc-config-tool'
-copyright = '2025, Hong-Phuc Bui'
+copyright = '2026, Hong-Phuc Bui'
 author = 'Hong-Phuc Bui'
 
 # The short X.Y version
