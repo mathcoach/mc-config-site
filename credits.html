@@ -1,21 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Credits &#8212; mc-config-tool 4.2.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=fe0615ce" />
+    <script src="_static/documentation_options.js?v=88a7f3e8"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Semi-automatic generation of Configuration File" href="gen-config.html" />
+    <link rel="prev" title="Semi-automatic Generation of Configuration File" href="gen-config.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,13 +31,14 @@
           <div class="body" role="main">
             
   <section id="credits">
-<h1>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h1>
-<p>Most code in packages <code class="docutils literal notranslate"><span class="pre">*.text</span></code> is copied from Apache’s StringUtils and Commons Text.</p>
-<p>In early versions of this libary, it used these both libraries. But other libraries in my projects
-also use these libraries in other version than this library uses. This caused many hard to solve version
-conflict problem.</p>
-<p>I decided to remove the dependencies and just copy the needed code into the package <code class="docutils literal notranslate"><span class="pre">*.text</span></code>. Nice
-sideeffect: it makes this library smaller.</p>
+<h1>Credits<a class="headerlink" href="#credits" title="Link to this heading">¶</a></h1>
+<p>The code within the <cite>*.text</cite> packages is primarily derived from Apache’s StringUtils and Commons Text libraries.</p>
+<p>In earlier versions of this library, these Apache components were directly included as dependencies.
+However, this often led to complex version conflicts, as other libraries within our projects also relied on <cite>StringUtils`</cite> and <cite>Commons Text</cite>,
+frequently in different versions.</p>
+<p>To mitigate these dependency conflicts,
+we decided to remove the direct library dependencies and instead integrate the necessary code snippets directly into our <cite>*.text</cite> packages.
+An additional benefit of this approach is a reduction in the overall library size.</p>
 </section>
 
 
@@ -70,7 +69,7 @@ sideeffect: it makes this library smaller.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="gen-config.html" title="previous chapter">Semi-automatic generation of Configuration File</a></li>
+      <li>Previous: <a href="gen-config.html" title="previous chapter">Semi-automatic Generation of Configuration File</a></li>
   </ul></li>
 </ul>
 </div>
@@ -83,7 +82,7 @@ sideeffect: it makes this library smaller.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -97,10 +96,10 @@ sideeffect: it makes this library smaller.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2025, Hong-Phuc Bui.
+      &copy;2026, Hong-Phuc Bui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -3,11 +3,13 @@ Credits
 *******
 
 
-Most code in packages ``*.text`` is copied from Apache's StringUtils and Commons Text.
+The code within the `*.text` packages is primarily derived from Apache's StringUtils and Commons Text libraries.
 
-In early versions of this libary, it used these both libraries. But other libraries in my projects
-also use these libraries in other version than this library uses. This caused many hard to solve version
-conflict problem.
+In earlier versions of this library, these Apache components were directly included as dependencies. 
+However, this often led to complex version conflicts, as other libraries within our projects also relied on `StringUtils`` and `Commons Text`, 
+frequently in different versions.
 
-I decided to remove the dependencies and just copy the needed code into the package ``*.text``. Nice
-sideeffect: it makes this library smaller.
+To mitigate these dependency conflicts, 
+we decided to remove the direct library dependencies and instead integrate the necessary code snippets directly into our `*.text` packages. 
+An additional benefit of this approach is a reduction in the overall library size.
+

@@ -7,8 +7,8 @@ Maven is used for building the application and for dependency management.
 
 
 Your app needs information about the database URL, the database user and the database password.
-These information should not be exposed on any source code repository. So you want to put these information in a local directory
-outside of the source code, say in
+This information should not be exposed on any source code repository. 
+So you want to put this information in a local directory outside of the source code, say in
 
 * ``${HOME}/myapp/configuration.properties`` for running the app locally, and
 * ``${HOME}/myapp/configuration-test.properties`` for running the unit test of the app, also locallly.
